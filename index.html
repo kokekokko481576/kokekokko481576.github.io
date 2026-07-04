@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>KOGA Koichiro | Portfolio</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            /* ─── Reset & Base ─── */
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            :root {
+                --accent: #0b6e99;
+                --accent-lt: #e4f3fa;
+                --dark: #1a2843;
+                --mid: #4a5568;
+                --light: #8896a9;
+                --border: #e2e8f0;
+                --bg: #ffffff;
+                --bg-alt: #f7f9fc;
+                --radius: 8px;
+                --nav-h: 60px;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                font-family:
+                    "Inter", "Noto Sans JP", "Hiragino Kaku Gothic ProN",
+                    sans-serif;
+                color: var(--dark);
+                background: var(--bg);
+                line-height: 1.7;
+                font-size: 15px;
+            }
+
+            /* ─── Nav ─── */
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: var(--nav-h);
+                background: rgba(255, 255, 255, 0.92);
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid var(--border);
+                z-index: 100;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 clamp(1.5rem, 5vw, 4rem);
+            }
+
+            .nav-logo {
+                font-size: 0.95rem;
+                font-weight: 600;
+                letter-spacing: 0.08em;
+                color: var(--dark);
+                text-decoration: none;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 2rem;
+                list-style: none;
+            }
+
+            .nav-links a {
+                font-size: 0.82rem;
+                font-weight: 500;
+                letter-spacing: 0.06em;
+                color: var(--mid);
+                text-decoration: none;
+                text-transform: uppercase;
+                transition: color 0.2s;
+            }
+
+            .nav-links a:hover {
+                color: var(--accent);
+            }
+
+            /* ─── Hero ─── */
+            #hero {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                padding: 0 clamp(1.5rem, 8vw, 10rem);
+                background: var(--bg);
+                position: relative;
+                overflow: hidden;
+            }
+
+            #hero::before {
+                content: "";
+                position: absolute;
+                top: -120px;
+                right: -120px;
+                width: 600px;
+                height: 600px;
+                border-radius: 50%;
+                background: radial-gradient(
+                    circle,
+                    #daf0fa 0%,
+                    transparent 70%
+                );
+                pointer-events: none;
+            }
+
+            .hero-content {
+                position: relative;
+                z-index: 1;
+            }
+
+            .hero-label {
+                font-size: 0.78rem;
+                font-weight: 600;
+                letter-spacing: 0.18em;
+                color: var(--accent);
+                text-transform: uppercase;
+                margin-bottom: 1.2rem;
+            }
+
+            .hero-name {
+                font-size: clamp(2.6rem, 6vw, 4.5rem);
+                font-weight: 700;
+                line-height: 1.1;
+                letter-spacing: -0.02em;
+                color: var(--dark);
+                margin-bottom: 0.6rem;
+            }
+
+            .hero-name-ja {
+                display: block;
+                font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+                font-weight: 300;
+                letter-spacing: 0.2em;
+                color: var(--mid);
+                margin-top: 0.4rem;
+            }
+
+            .hero-tagline {
+                font-size: clamp(0.95rem, 2vw, 1.1rem);
+                color: var(--mid);
+                font-weight: 300;
+                margin: 1.5rem 0 2.5rem;
+                max-width: 520px;
+            }
+
+            .hero-tagline strong {
+                color: var(--dark);
+                font-weight: 500;
+            }
+
+            .hero-links {
+                display: flex;
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .btn {
+                display: inline-block;
+                padding: 0.65rem 1.6rem;
+                border-radius: var(--radius);
+                font-size: 0.85rem;
+                font-weight: 500;
+                letter-spacing: 0.04em;
+                text-decoration: none;
+                transition: all 0.2s;
+            }
+
+            .btn-primary {
+                background: var(--accent);
+                color: #fff;
+            }
+
+            .btn-primary:hover {
+                background: #085d82;
+                transform: translateY(-1px);
+            }
+
+            .btn-outline {
+                border: 1.5px solid var(--border);
+                color: var(--mid);
+                background: transparent;
+            }
+
+            .btn-outline:hover {
+                border-color: var(--accent);
+                color: var(--accent);
+                transform: translateY(-1px);
+            }
+
+            .hero-scroll {
+                position: absolute;
+                bottom: 2.5rem;
+                left: clamp(1.5rem, 8vw, 10rem);
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
+                font-size: 0.75rem;
+                letter-spacing: 0.12em;
+                color: var(--light);
+                text-transform: uppercase;
+            }
+
+            .hero-scroll::before {
+                content: "";
+                display: block;
+                width: 28px;
+                height: 1px;
+                background: var(--light);
+            }
+
+            /* ─── Section Common ─── */
+            section {
+                padding: 100px clamp(1.5rem, 8vw, 10rem);
+            }
+
+            .section-alt {
+                background: var(--bg-alt);
+            }
+
+            .section-label {
+                font-size: 0.72rem;
+                font-weight: 600;
+                letter-spacing: 0.2em;
+                color: var(--accent);
+                text-transform: uppercase;
+                margin-bottom: 0.6rem;
+            }
+
+            .section-title {
+                font-size: clamp(1.6rem, 3vw, 2.2rem);
+                font-weight: 700;
+                letter-spacing: -0.02em;
+                color: var(--dark);
+                margin-bottom: 3rem;
+            }
+
+            .section-title::after {
+                content: "";
+                display: block;
+                width: 36px;
+                height: 3px;
+                background: var(--accent);
+                border-radius: 2px;
+                margin-top: 0.7rem;
+            }
+
+            /* ─── About ─── */
+            #about .about-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 5rem;
+                align-items: start;
+            }
+
+            .about-text p {
+                color: var(--mid);
+                margin-bottom: 1rem;
+                font-size: 0.95rem;
+            }
+
+            .about-text p:last-child {
+                margin-bottom: 0;
+            }
+
+            .about-meta {
+                display: grid;
+                gap: 1rem;
+            }
+
+            .meta-item {
+                padding: 1.2rem 1.4rem;
+                background: var(--bg);
+                border: 1px solid var(--border);
+                border-radius: var(--radius);
+                border-left: 3px solid var(--accent);
+            }
+
+            .meta-label {
+                font-size: 0.7rem;
+                font-weight: 600;
+                letter-spacing: 0.14em;
+                color: var(--light);
+                text-transform: uppercase;
+                margin-bottom: 0.35rem;
+            }
+
+            .meta-value {
+                font-size: 0.88rem;
+                color: var(--dark);
+                font-weight: 500;
+            }
+
+            /* ─── CV / Timeline ─── */
+            .timeline {
+                position: relative;
+                padding-left: 2rem;
+            }
+
+            .timeline::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 6px;
+                bottom: 6px;
+                width: 2px;
+                background: linear-gradient(
+                    to bottom,
+                    var(--accent),
+                    var(--accent-lt)
+                );
+                border-radius: 2px;
+            }
+
+            .tl-item {
+                position: relative;
+                padding-bottom: 2.8rem;
+                padding-left: 1.8rem;
+            }
+
+            .tl-item:last-child {
+                padding-bottom: 0;
+            }
+
+            .tl-dot {
+                position: absolute;
+                left: -2.3rem;
+                top: 4px;
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: var(--accent);
+                border: 2.5px solid var(--bg-alt);
+                box-shadow: 0 0 0 2px var(--accent);
+            }
+
+            .tl-dot.future {
+                background: var(--bg-alt);
+                border-color: var(--accent);
+                box-shadow: 0 0 0 2px var(--accent-lt);
+            }
+
+            .tl-date {
+                font-size: 0.75rem;
+                font-weight: 600;
+                letter-spacing: 0.1em;
+                color: var(--accent);
+                text-transform: uppercase;
+                margin-bottom: 0.3rem;
+            }
+
+            .tl-title {
+                font-size: 1rem;
+                font-weight: 600;
+                color: var(--dark);
+                margin-bottom: 0.3rem;
+            }
+
+            .tl-sub {
+                font-size: 0.87rem;
+                color: var(--mid);
+            }
+
+            /* ─── Skills ─── */
+            .skills-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .skill-card {
+                background: var(--bg);
+                border: 1px solid var(--border);
+                border-radius: var(--radius);
+                padding: 1.6rem;
+                transition:
+                    box-shadow 0.2s,
+                    transform 0.2s;
+            }
+
+            .skill-card:hover {
+                box-shadow: 0 8px 24px rgba(11, 110, 153, 0.08);
+                transform: translateY(-2px);
+            }
+
+            .skill-icon {
+                font-size: 1.4rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .skill-category {
+                font-size: 0.75rem;
+                font-weight: 600;
+                letter-spacing: 0.14em;
+                color: var(--accent);
+                text-transform: uppercase;
+                margin-bottom: 0.8rem;
+            }
+
+            .skill-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.45rem;
+            }
+
+            .tag {
+                display: inline-block;
+                padding: 0.28rem 0.75rem;
+                border-radius: 999px;
+                font-size: 0.78rem;
+                font-weight: 500;
+                background: var(--accent-lt);
+                color: var(--accent);
+                white-space: nowrap;
+            }
+
+            .tag.dark {
+                background: #eef0f5;
+                color: var(--mid);
+            }
+
+            /* ─── Activities ─── */
+            .activities-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .activity-card {
+                background: var(--bg);
+                border: 1px solid var(--border);
+                border-radius: var(--radius);
+                padding: 1.8rem;
+                transition:
+                    box-shadow 0.2s,
+                    transform 0.2s;
+            }
+
+            .activity-card:hover {
+                box-shadow: 0 8px 24px rgba(11, 110, 153, 0.08);
+                transform: translateY(-2px);
+            }
+
+            .activity-year {
+                font-size: 0.72rem;
+                font-weight: 600;
+                letter-spacing: 0.14em;
+                color: var(--light);
+                text-transform: uppercase;
+                margin-bottom: 0.7rem;
+            }
+
+            .activity-title {
+                font-size: 1rem;
+                font-weight: 600;
+                color: var(--dark);
+                margin-bottom: 0.6rem;
+            }
+
+            .activity-desc {
+                font-size: 0.87rem;
+                color: var(--mid);
+                line-height: 1.65;
+            }
+
+            /* ─── Contact ─── */
+            #contact {
+                text-align: center;
+                background: var(--dark);
+            }
+
+            #contact .section-label {
+                color: #7ab8d4;
+            }
+
+            #contact .section-title {
+                color: #ffffff;
+            }
+
+            #contact .section-title::after {
+                background: #7ab8d4;
+                margin: 0.7rem auto 0;
+            }
+
+            .contact-lead {
+                font-size: 0.95rem;
+                color: #8fa3b8;
+                max-width: 480px;
+                margin: 0 auto 2.5rem;
+            }
+
+            .contact-email {
+                display: inline-block;
+                font-size: 1rem;
+                font-weight: 500;
+                color: #7ab8d4;
+                text-decoration: none;
+                padding: 0.8rem 2rem;
+                border: 1.5px solid #2e4a63;
+                border-radius: var(--radius);
+                letter-spacing: 0.02em;
+                transition: all 0.2s;
+                margin-bottom: 1.8rem;
+            }
+
+            .contact-email:hover {
+                background: rgba(122, 184, 212, 0.1);
+                border-color: #7ab8d4;
+            }
+
+            .contact-social {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                margin-bottom: 3rem;
+                flex-wrap: wrap;
+            }
+
+            .social-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.6rem 1.3rem;
+                border: 1.5px solid #2e4a63;
+                border-radius: var(--radius);
+                color: #8fa3b8;
+                text-decoration: none;
+                font-size: 0.85rem;
+                font-weight: 500;
+                transition: all 0.2s;
+            }
+
+            .social-link:hover {
+                border-color: #7ab8d4;
+                color: #7ab8d4;
+                background: rgba(122, 184, 212, 0.08);
+            }
+
+            .social-link svg {
+                width: 15px;
+                height: 15px;
+                fill: currentColor;
+                flex-shrink: 0;
+            }
+
+            .footer-note {
+                font-size: 0.75rem;
+                color: #3d566e;
+                padding-top: 2rem;
+                border-top: 1px solid #243347;
+            }
+
+            /* ─── Responsive ─── */
+            @media (max-width: 768px) {
+                section {
+                    padding: 70px clamp(1.2rem, 5vw, 2rem);
+                }
+
+                #about .about-grid {
+                    grid-template-columns: 1fr;
+                    gap: 2.5rem;
+                }
+
+                .nav-links {
+                    gap: 1.2rem;
+                }
+
+                .nav-links a {
+                    font-size: 0.75rem;
+                }
+
+                .hero-scroll {
+                    display: none;
+                }
+            }
+
+            @media (max-width: 520px) {
+                .nav-links {
+                    display: none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- ─── Navigation ─── -->
+        <nav>
+            <a class="nav-logo" href="#hero">K. KOGA</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#cv">CV</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#activities">Activities</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- ─── Hero ─── -->
+        <section id="hero">
+            <div class="hero-content">
+                <p class="hero-label">Naval Architect &amp; Roboticist</p>
+                <h1 class="hero-name">
+                    KOGA Koichiro
+                    <span class="hero-name-ja">古賀 光一朗</span>
+                </h1>
+                <p class="hero-tagline">
+                    <strong>大阪大学 工学部</strong> 船舶海洋工学コース<br />
+                    船舶知能化領域 ／ Robohan 機構班
+                </p>
+                <div class="hero-links">
+                    <a class="btn btn-primary" href="#about">About me</a>
+                    <a
+                        class="btn btn-outline"
+                        href="https://github.com/kokekokko481576"
+                        target="_blank"
+                        rel="noopener"
+                        >GitHub</a
+                    >
+                    <a
+                        class="btn btn-outline"
+                        href="https://x.com/kokekokko481576"
+                        target="_blank"
+                        rel="noopener"
+                        >X</a
+                    >
+                    <a class="btn btn-outline" href="#contact">Contact</a>
+                </div>
+            </div>
+            <span class="hero-scroll">Scroll</span>
+        </section>
+
+        <!-- ─── About ─── -->
+        <section id="about">
+            <p class="section-label">About</p>
+            <h2 class="section-title">自己紹介</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        大阪大学 工学部 地球総合工学科
+                        船舶海洋工学コースの4年生です。
+                        2026年4月より船舶知能化領域に配属されました。
+                    </p>
+                    <p>
+                        幼稚園から高校まで剣道一筋で打ち込み、大学入学後はロボコン制作団体
+                        Robohan でロボット製作を開始しました。
+                        ハードウェア・ソフトウェアの両面から、自律システムの設計に取り組んでいます。
+                    </p>
+                    <p>
+                        現在の関心は
+                        <strong>水上船の6自由度DP（動的測位）</strong
+                        >、<strong>SLAM</strong>、
+                        <strong>アクティブ動揺補償</strong>
+                        など、実海域での自律操船に関わる研究領域です。
+                    </p>
+                    <p>
+                        I am an undergraduate student at Osaka University,
+                        majoring in Naval Architecture and Ocean Engineering. My
+                        research interests include autonomous marine systems,
+                        dynamic positioning, and motion compensation.
+                    </p>
+                </div>
+                <div class="about-meta">
+                    <div class="meta-item">
+                        <p class="meta-label">Affiliation</p>
+                        <p class="meta-value">
+                            大阪大学 工学部 地球総合工学科<br />船舶海洋工学コース
+                        </p>
+                    </div>
+                    <div class="meta-item">
+                        <p class="meta-label">Laboratory</p>
+                        <p class="meta-value">船舶知能化領域（2026年4月〜）</p>
+                    </div>
+                    <div class="meta-item">
+                        <p class="meta-label">Graduation</p>
+                        <p class="meta-value">2027年3月 卒業予定</p>
+                    </div>
+                    <div class="meta-item">
+                        <p class="meta-label">Background</p>
+                        <p class="meta-value">
+                            鳥取県立米子東高等学校（2022年卒）<br />剣道歴
+                            約12年
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── CV ─── -->
+        <section id="cv" class="section-alt">
+            <p class="section-label">Curriculum Vitae</p>
+            <h2 class="section-title">経歴</h2>
+            <div class="timeline">
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <p class="tl-date">2022年4月</p>
+                    <p class="tl-title">鳥取県立米子東高等学校 卒業</p>
+                    <p class="tl-sub">
+                        幼稚園から高校まで剣道を継続。文武両道を実践。
+                    </p>
+                </div>
+
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <p class="tl-date">2023年4月</p>
+                    <p class="tl-title">大阪大学 工学部 地球総合工学科 入学</p>
+                    <p class="tl-sub">
+                        船舶海洋工学コースに進学。同時に Robohan
+                        に加入しロボット制作を開始。
+                    </p>
+                </div>
+
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <p class="tl-date">2025年5月</p>
+                    <p class="tl-title">NHK学生ロボコン2025 出場</p>
+                    <p class="tl-sub">
+                        Robohan
+                        機構班のピットクルーとして大会に参加。機構設計・製造を経験。
+                    </p>
+                </div>
+
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <p class="tl-date">2026年4月</p>
+                    <p class="tl-title">船舶知能化領域 研究室 配属</p>
+                    <p class="tl-sub">
+                        船舶自律制御システムに関する研究を開始。
+                    </p>
+                </div>
+
+                <div class="tl-item">
+                    <div class="tl-dot future"></div>
+                    <p class="tl-date">2027年3月（予定）</p>
+                    <p class="tl-title">大阪大学 工学部 卒業予定</p>
+                    <p class="tl-sub">— 今後の進路を模索中 —</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── Skills ─── -->
+        <section id="skills">
+            <p class="section-label">Skills</p>
+            <h2 class="section-title">技術スタック</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">⚙️</div>
+                    <p class="skill-category">Hardware &amp; Control</p>
+                    <div class="skill-tags">
+                        <span class="tag">STM32 (G474)</span>
+                        <span class="tag">ESP32</span>
+                        <span class="tag">ODrive</span>
+                        <span class="tag">アジマス制御</span>
+                        <span class="tag">ZED-F9P RTK-GNSS</span>
+                        <span class="tag">定点保持制御</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">🖨️</div>
+                    <p class="skill-category">Modeling &amp; Manufacturing</p>
+                    <div class="skill-tags">
+                        <span class="tag">3Dプリンター</span>
+                        <span class="tag">Bambu Lab P1S</span>
+                        <span class="tag">機械部品設計</span>
+                        <span class="tag">機構設計</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">💻</div>
+                    <p class="skill-category">Software &amp; Tools</p>
+                    <div class="skill-tags">
+                        <span class="tag">ROS2</span>
+                        <span class="tag">Ubuntu Linux</span>
+                        <span class="tag">MATLAB</span>
+                        <span class="tag dark">Neovim</span>
+                        <span class="tag dark">tmux</span>
+                        <span class="tag dark">Shell Script</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">🚢</div>
+                    <p class="skill-category">Research Interests</p>
+                    <div class="skill-tags">
+                        <span class="tag">6-DOF Dynamic Positioning</span>
+                        <span class="tag">水上船 SLAM</span>
+                        <span class="tag">アクティブ動揺補償</span>
+                        <span class="tag">自律操船</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── Activities ─── -->
+        <section id="activities" class="section-alt">
+            <p class="section-label">Activities</p>
+            <h2 class="section-title">プロジェクト・活動</h2>
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <p class="activity-year">2023 — Present</p>
+                    <p class="activity-title">
+                        大阪大学公式ロボット制作団体 Robohan
+                    </p>
+                    <p class="activity-desc">
+                        大学からロボコンを開始し、Robohan の機構班に所属。
+                        機構設計・3Dプリンターによる部品製造・アクチュエータ制御を担当。
+                        機構班のリード陣として、チームの技術的意思決定をリード。
+                    </p>
+                </div>
+
+                <div class="activity-card">
+                    <p class="activity-year">2025</p>
+                    <p class="activity-title">NHK学生ロボコン2025 出場</p>
+                    <p class="activity-desc">
+                        Robohan として NHK学生ロボコン2025 に出場。
+                        機構班のリードとして、競技ロボットの機構設計・製造に中心的な役割を担った。
+                    </p>
+                </div>
+
+                <div class="activity-card">
+                    <p class="activity-year">2025 — Present</p>
+                    <p class="activity-title">
+                        自作アジマス模型船システムの開発
+                    </p>
+                    <p class="activity-desc">
+                        アジマス推進器を搭載した模型船システムをゼロから設計・製作。
+                        ZED-F9P（RTK-GNSS）と ROS2
+                        を統合し、cm精度の位置計測に基づく 定点保持制御（DP
+                        システム）を実装。主機箱には ODrive、アジマス箱には
+                        STM32 G474 を採用。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── Contact ─── -->
+        <section id="contact">
+            <p class="section-label">Contact</p>
+            <h2 class="section-title">連絡先</h2>
+            <p class="contact-lead">
+                研究に関するご質問、共同研究・インターンのご相談など、
+                お気軽にご連絡ください。
+            </p>
+            <a
+                class="contact-email"
+                href="mailto:koga_koichiro@naoe.eng.osaka-u.ac.jp"
+            >
+                koga_koichiro@naoe.eng.osaka-u.ac.jp
+            </a>
+            <div class="contact-social">
+                <a
+                    class="social-link"
+                    href="https://github.com/kokekokko481576"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                    GitHub
+                </a>
+                <a
+                    class="social-link"
+                    href="https://x.com/kokekokko481576"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.737-8.841L1.254 2.25H8.08l4.26 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    X (Twitter)
+                </a>
+            </div>
+            <p class="footer-note">
+                &copy; 2026 KOGA Koichiro · Osaka University, Dept. of Naval
+                Architecture and Ocean Engineering
+            </p>
+        </section>
+    </body>
+</html>
